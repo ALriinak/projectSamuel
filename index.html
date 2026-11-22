@@ -1,87 +1,229 @@
-<!doctype html>
+
+<!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#17110e">
-  <meta name="description" content="MIDIMAN — a medieval music hall for original music.">
-  <title>MIDIMAN — The Royal Music Hall</title>
-  <link rel="icon" href="favicon.svg" type="image/svg+xml">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@400;500;600;700;800&family=Crimson+Text:wght@400;600;700&family=IM+Fell+English:ital@0;1&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <script src="script.js" defer></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MIDIMAN</title>
+
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            background: #151515;
+            color: white;
+            font-family: Arial, sans-serif;
+            text-align: center;
+            overflow-x: hidden;
+        }
+
+        .fade-in {
+            animation: fadeSlide 1.2s ease-out;
+        }
+
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .page {
+            position: relative;
+            min-height: max(200vh, 1857px);
+        }
+
+        .background-collage {
+            position: absolute;
+            inset: 0;
+            display: grid;
+            grid-template-columns: repeat(8, minmax(0, 1fr));
+            grid-auto-rows: 90px;
+            gap: 3px;
+            width: 100%;
+            overflow: hidden;
+            z-index: 0;
+        }
+
+        .background-collage img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            min-width: 0;
+            object-fit: cover;
+        }
+
+        .dark-overlay {
+            position: absolute;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.65);
+            z-index: 1;
+            pointer-events: none;
+        }
+
+        .website-content {
+            position: relative;
+            z-index: 2;
+            color: white;
+            padding: 100px 20px;
+        }
+
+        h1 {
+            font-size: 60px;
+            letter-spacing: 5px;
+        }
+
+        p {
+            color: white;
+        }
+
+    </style>
 </head>
+
 <body>
-  <div class="paper-grain" aria-hidden="true"></div>
-  <header class="masthead">
-    <a class="brand" href="#top" aria-label="MIDIMAN home">
-      <span class="brand-mark">M</span>
-      <span class="brand-name">MIDIMAN<small>THE ROYAL MUSIC HALL</small></span>
-    </a>
-    <nav><a href="#collection">THE COLLECTION</a><a href="#about">THE MINSTREL</a></nav>
-    <div class="royal-seal"><span>✦</span> EST. MMXXVI</div>
-  </header>
 
-  <main id="top">
-    <section class="hero">
-      <div class="hero-ornament">✥</div>
-      <p class="overline">✧ &nbsp; A PRIVATE COLLECTION, OPEN TO ALL &nbsp; ✧</p>
-      <h1>Welcome to<br><em>the Music Hall</em></h1>
-      <p class="hero-copy">Enter, good traveler. Within these walls lies a growing collection of original sounds, songs, and compositions, gathered for the pleasure of the realm.</p>
-      <a class="gold-button" href="#collection">ENTER THE COLLECTION <span>↘</span></a>
-      <div class="hero-bottom"><span>✧ ORIGINAL MUSIC</span><span class="rule"></span><span>✧ NO TAVERN FEE REQUIRED</span></div>
-    </section>
+    <div class="page">
 
-    <section class="collection section-wrap" id="collection">
-      <div class="section-title">
-        <div><p class="eyebrow">✦ THE ROYAL ARCHIVES ✦</p><h2>The Collection</h2></div>
-        <p class="section-aside">A catalogue of musical works<br>from the MIDIMAN realm.</p>
-      </div>
-      <div class="collection-tools">
-        <label class="search-box"><span>⌕</span><input id="search" type="search" placeholder="Search the archives..." aria-label="Search songs"></label>
-        <div class="filter-label"><span class="tiny-dot"></span> ALL RECORDED WORKS</div>
-      </div>
-      <div class="library-layout">
-        <div class="track-list" id="trackList" aria-live="polite">
-          <div class="empty-state"><span class="empty-emblem">♬</span><h3>The shelves await their songs</h3><p>No recordings have been added to the archives yet. The hall shall fill when the minstrel uploads their first work.</p></div>
+        <div class="background-collage">
+
+            <img src="images/Untitled design.png" alt="">
+            <img src="images/Untitled design(1).png" alt="">
+            <img src="images/Untitled design(2).png" alt="">
+            <img src="images/Untitled design(3).png" alt="">
+            <img src="images/Untitled design(4).png" alt="">
+            <img src="images/Untitled design(5).png" alt="">
+            <img src="images/Untitled design(6).png" alt="">
+            <img src="images/Untitled design(7).png" alt="">
+            <img src="images/Untitled design(8).png" alt="">
+            <img src="images/Untitled design(9).png" alt="">
+            <img src="images/Untitled design(10).png" alt="">
+            <img src="images/Untitled design(11).png" alt="">
+
         </div>
-        <aside class="now-playing-card">
-          <div class="card-heading"><span>✦ NOW PLAYING ✦</span><span class="card-corner">❧</span></div>
-          <div class="cover-art" id="coverArt"><div class="cover-inner"><span class="cover-crown">♛</span><span class="cover-monogram">M</span><span class="cover-caption">THE MIDIMAN<br>COLLECTION</span></div></div>
-          <p class="now-label">CURRENTLY UPON THE TURNTABLE</p>
-          <h3 id="nowTitle">No song selected</h3>
-          <p id="nowArtist" class="now-artist">Choose a recording from the archives</p>
-          <div class="player-controls">
-            <button id="prevBtn" class="control" aria-label="Previous track">|◀</button>
-            <button id="playBtn" class="play-control" aria-label="Play">▶</button>
-            <button id="nextBtn" class="control" aria-label="Next track">▶|</button>
-          </div>
-          <div class="progress-wrap"><span id="currentTime">0:00</span><input id="seek" type="range" min="0" max="1000" value="0" aria-label="Track progress"><span id="duration">0:00</span></div>
-          <div class="volume-row"><span>VOLUME</span><input id="volume" type="range" min="0" max="1" step="0.01" value="0.8" aria-label="Volume"><span>♫</span></div>
-        </aside>
-      </div>
-      <p class="archive-note">✧ &nbsp; Best enjoyed with headphones, a warm hearth, and absolutely no dragons.</p>
-    </section>
 
-    <section class="about-band" id="about">
-      <div class="about-inner section-wrap">
-        <div class="illuminated-letter">M</div>
-        <div><p class="eyebrow">✦ THE KEEPER OF THE HALL ✦</p><h2>A minstrel's<br><em>own little kingdom.</em></h2><p>MIDIMAN is an independent music hall devoted to one thing: sharing original music. No accounts, no comments, no fuss. Just press play and enjoy the music.</p></div>
-        <div class="about-seal"><span>✧</span><b>MM</b><small>THE<br>MINSTREL</small><span>✧</span></div>
-      </div>
-    </section>
+        <div class="dark-overlay"></div>
 
-    <section class="closing section-wrap">
-      <p class="eyebrow">✦ A FINAL WORD ✦</p>
-      <h2>May your roads be fair<br>and your <em>music loud.</em></h2>
-      <p>Thank you for visiting the MIDIMAN Music Hall.</p>
-      <div class="closing-flourish">❧ ✦ ❧</div>
-    </section>
-  </main>
+        <main class="website-content">
 
-  <footer class="footer"><a class="footer-brand" href="#top">MIDIMAN</a><span>THE ROYAL MUSIC HALL</span><span>© <span id="year"></span> &nbsp; ALL SONGS RESERVED</span></footer>
-  <audio id="audio" preload="metadata"></audio>
+            <h1 class="fade-in">MIDIMAN</h1>
+
+            <p>Welcome to my corner of the internet.</p>
+
+        </main>
+
+    </div>
+
+    <script>
+
+        const collage = document.querySelector('.background-collage');
+
+        // Collect the original 12 image paths
+        const images = Array.from(collage.querySelectorAll('img'))
+            .map(img => img.src);
+
+        // Remove the original images
+        collage.innerHTML = '';
+
+        // Randomize an array
+        function shuffle(array) {
+
+            for (let i = array.length - 1; i > 0; i--) {
+
+                const j = Math.floor(Math.random() * (i + 1));
+
+                [array[i], array[j]] = [array[j], array[i]];
+
+            }
+
+            return array;
+        }
+
+        // Generate 160 randomized image tiles
+        for (let i = 0; i < 160; i += 12) {
+
+            const randomizedImages = shuffle([...images]);
+
+            randomizedImages.forEach(src => {
+
+                if (collage.children.length < 160) {
+
+                    const img = document.createElement('img');
+
+                    img.src = src;
+                    img.alt = '';
+
+                    collage.appendChild(img);
+
+                }
+
+            });
+
+        }
+
+        // Give each image independent random movement
+        function animateImage(img) {
+
+            const x = (Math.random() - 0.5) * 1200;
+            const y = (Math.random() - 0.5) * 1200;
+
+            const duration = 1000
+
+            const animation = img.animate(
+
+                [
+                    {
+                        transform: 'translate(0px, 0px)'
+                    },
+
+                    {
+                        transform: `translate(${x}px, ${y}px)`
+                    },
+
+                    {
+                        transform: 'translate(0px, 0px)'
+                    }
+                ],
+
+                {
+                    duration: duration,
+                    easing: 'ease-in-out',
+                    iterations: 1
+                }
+
+            );
+
+            // When the image returns home, choose a new direction
+            animation.onfinish = () => {
+
+                animateImage(img);
+
+            };
+
+        }
+
+        // Start each image at a different time
+        document.querySelectorAll('.background-collage img')
+            
+            .forEach(img => {
+                
+                
+                setTimeout(() => {
+
+                    animateImage(img);
+
+                }, Math.random() * 500);
+
+            });
+
+    </script>
+
 </body>
 </html>
