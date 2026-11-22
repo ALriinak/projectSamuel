@@ -1,0 +1,1 @@
+Upload your MP3 or WAV files into this folder. Then add each file to ../playlist.json. See README.txt.
