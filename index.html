@@ -585,10 +585,21 @@ button:hover {
 
 <section id="choice-screen" class="story-screen" hidden>
     <h2>Which would you like to examine?</h2>
+
     <div class="option-buttons">
-        <button data-next="library-screen">Library</button>
-        <button data-next="history-screen">History</button>
-        <button data-next="music-screen">Music</button>
+
+        <button data-next="library-screen">
+            Library
+        </button>
+
+        <button data-next="history-screen" id="history-option" hidden>
+            History
+        </button>
+
+        <button data-next="music-screen" id="music-option" hidden>
+            Music
+        </button>
+
     </div>
 </section>
 
@@ -950,6 +961,13 @@ document.querySelectorAll('.background-collage img').forEach(img => {
 
 const enterButton = document.getElementById('enter-button');
 
+const historyOption = document.getElementById('history-option');
+const musicOption = document.getElementById('music-option');
+
+// Progress tracking
+let libraryCompleted = false;
+let historyCompleted = false;
+
 setTimeout(() => {
     enterButton.hidden = false;
 }, 5000);
@@ -967,6 +985,10 @@ function showScreen(screenId) {
 
     document.getElementById(screenId).hidden = false;
 
+    // Update unlocked options
+    historyOption.hidden = !libraryCompleted;
+    musicOption.hidden = !historyCompleted;
+
     window.scrollTo(0, 0);
 }
 
@@ -978,9 +1000,21 @@ document.querySelectorAll('[data-next]').forEach(button => {
 
     button.addEventListener('click', () => {
 
-        showScreen(button.dataset.next);
+        const nextScreen = button.dataset.next;
 
-        if (button.dataset.next === 'music-screen') {
+        // Unlock History after visiting Library
+        if (nextScreen === 'library-screen') {
+            libraryCompleted = true;
+        }
+
+        // Unlock Music after visiting History
+        if (nextScreen === 'history-screen') {
+            historyCompleted = true;
+        }
+
+        showScreen(nextScreen);
+
+        if (nextScreen === 'music-screen') {
             startMusicChallenge();
         }
     });
@@ -1218,7 +1252,7 @@ songPlay.addEventListener('click', () => {
     // Start audio ONLY after the Play button is clicked.
     finalAudio.play().then(() => {
 
-        // 1 minute and 31 seconds.
+        // 2 minutes and 15 seconds.
         songTimer = setTimeout(() => {
 
             songHome.hidden = false;
